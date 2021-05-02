@@ -245,7 +245,3 @@ function displayGames(data, page = 1, gamePerPage = 6){
     }
 }
 
-const url = `https://api.rawg.io/api/games?key=${this.api_key}&dates=2016-01-01,2021-04-27&platforms=18&search=a`;
-const singleGame = new singleGame.SingleGames(url);
-
-singleGame.geResults();

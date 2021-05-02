@@ -22,9 +22,9 @@ class Game {
             }
         }
         
-        state.games = await getAllGames();
+        let games = await getAllGames();
 
-        return state.games;
+        return games;
 
     }
     }
