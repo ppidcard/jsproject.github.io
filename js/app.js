@@ -212,6 +212,8 @@ const renderButtons = (page, gameTotalNumbers, gamePerPage) => {
       `
       } else if(page === pages && pages > 1){
         button = createButton(page, 'prev');
+      } else{
+        button='';
       }
 
       resultButtons.insertAdjacentHTML('afterbegin', button);
@@ -220,7 +222,7 @@ const renderButtons = (page, gameTotalNumbers, gamePerPage) => {
 function displayGames(data, page = 1, gamePerPage = 6){
   const start = (page-1) * gamePerPage;
   const end = page * gamePerPage;
-
+  
    gameResults.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>${data.length} Game Found.</b></p>`
 
     data.slice(start, end).forEach(game => {
