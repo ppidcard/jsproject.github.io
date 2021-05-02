@@ -213,7 +213,7 @@ const renderButtons = (page, gameTotalNumbers, gamePerPage) => {
       } else if(page === pages && pages > 1){
         button = createButton(page, 'prev');
       } else{
-        button='';
+        button = '';
       }
 
       resultButtons.insertAdjacentHTML('afterbegin', button);
