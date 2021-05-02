@@ -64,10 +64,10 @@
         <div class = 'coverPic'>
 
             <!--title-->
-            <p class = 'coverPicTitle '>PS4 Games</p>
+            <p class = 'coverPicTitle '>PS4 GAMES</p>
 
             <!--selections-->
-            <div class ='form-group mt-3'>
+            <div class ='form-group mt-3' id='twoFields'>
             <input type = 'text' id = 'gameField' value = ''>
             <button class = 'devices' type = 'submit'id = 'searchGame'>Search</button>
           </div>
@@ -92,7 +92,7 @@
           <p id="results"></p>
 
           <div id="gameList">
-
+            <img id='loading' src='/img/loading.gif'>
           </div>
 
       </div>
@@ -101,12 +101,26 @@
 
 
     <div class='resultsPage'>
-
+ 
     </div>
     
-          
+    <footer>
+      <div id='footer'>
+        <ul id='footerUl'>
+          <li id='footerLi'><a href="https://twitter.com/">Twitter</a></li>
+          <li id='footerLi'><a href="https://codepen.io/">Codepen</a></li>
+          <li id='footerLi'><a href="mailto:">Email</a></li>
+          <li id='footerLi'><a href="https://dribbble.com/">Dribbble</a></li>
+          <li id='footerLi'><a href="https://github.com/">Github</a></li>
+        </ul>
+      </div>
+    
+    </footer>
     <script src="/js/game.js"></script>
     <script src="/js/app.js"></script>
     
+
 </body>
+
+
 </html>

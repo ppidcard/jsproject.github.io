@@ -1,4 +1,4 @@
-class singleGame{
+class singleGames{
     constructor(url){
         this.url = url;
     }

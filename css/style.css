@@ -1,3 +1,4 @@
+
 .all{
 width: 60vw;
 margin-left:200px;
@@ -8,8 +9,8 @@ html {
     min-height: 100vh;
   }
   body {
-      font-family: sans-serif;
 
+      font-family: Menlo, monospace;
     position: relative;
   }
   
@@ -30,7 +31,7 @@ html {
     top:0;
     left:0;
     height:100vh;
-    background-color: #252a32;
+    background-color: #243742;
     color: white;
     padding: 30px 20px;
     display: flex;
@@ -103,7 +104,7 @@ html {
     }
   }
 .coverPic{
-    width: calc(100vw - 200px);
+    width: calc(100vw - 214px);
     height: 496px;
     background-image: url(/img/Final-Fantasy-VII-Remake-Part-2-Yoshinori-Kitase-Square-Enix-Siliconera.jpg);
     background-position: top;
@@ -117,13 +118,14 @@ html {
 /* title */
 .coverPicTitle{
     font-size: 40px;
-    color: tomato;
+    color: white;
     letter-spacing: 3.89px;
     padding-top: 89px;
     margin-bottom: 96px;
 }
 
 /* selection */
+
 .devices{
     width: 70px;
     height: 30px;
@@ -135,7 +137,9 @@ html {
     cursor: pointer;
     opacity: 100%;
     border-radius: 3px;
-    
+
+      margin-top: 50px;
+
 }
 
 .devices:hover{
@@ -156,6 +160,7 @@ html {
     border-radius: 5px;
     position: absolute;
     bottom: 50px;
+
     z-index: 2;
 }
 .popMenuTitle{
@@ -179,6 +184,7 @@ html {
     border-radius: 5px;
     border: none;
     color: white;
+    margin-top: 40px;
 }
 
 
@@ -204,7 +210,7 @@ html {
     background-color: #f5d005;
 }
 .sht:hover{
-  background-color: goldenrod;
+  background-color: #a08803;
 }
 
 .adv{
@@ -299,6 +305,8 @@ h3{
 
 .resultsPage{
   margin-left: 400px;
+  margin-top: 40px;
+
 
 }
 
@@ -358,19 +366,82 @@ h3{
   font-size: 11px;
   margin-top: 20px;
   margin-bottom: -6px;
-  margin-left: -40px;
+  margin-left: -50px;
 }
 #loginButton{
   width: 60px;
   height: 20px;
   font-size: 11px;
-  background-color:darkgrey;
+  background-color:#89c7ee
+  ;
+  margin-top: -90px;
   margin-left: -40px;
 }
-
+#loginButton:hover{
+  background-color:#33241c;
+}
 li #loginPic{
   width: 40px;
   height: 40px;
   margin-top: -600px;
   margin-left: 10px;
+  text-decoration: none;
+
 }
+
+footer ul {
+  display: inline-grid;
+  grid-auto-flow: row;
+  grid-gap: 24px;
+  justify-items: center;
+  margin: auto;
+  grid-auto-flow: column;
+  text-decoration: none;
+  margin-left: 450px;
+  margin-top: 16px;
+}
+
+
+
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+a {
+  color: white;
+  text-decoration: none;
+
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  box-shadow: inset 0 -1.2em 0 hsla(0, 0%, 100%, 0.4);
+  text-decoration: none;
+}
+
+
+footer {
+  display: flex;
+  height: 6vh;
+  margin-left: 200px;
+
+  width: 85vw;
+  background-color: #33241c
+  ;
+  line-height: 1.3;
+  font-family: Menlo, monospace;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+#gameList #loading{
+ width: 100px;
+ height: 100px;
+ margin-left: 450px;
+}
+
