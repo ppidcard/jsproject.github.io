@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    
+
+    <div class="container">
+        <div id="hamburgerBtn">&#9776</div>
+        <nav id="sideMenu">
+          <div class="nav-brand">
+
+
+          </div>
+
+
+
+
+
+      <div id='loginInAll'>
+      <form id='log'action="#">
+                <div class="dataUser">
+                  <label id='logLabel'>Username</label>
+                  <input id='login'type="text" required>
+                </div>
+      <div class="dataPassword">
+                  <label id='logLabel'>Password</label>
+                  <input id='login'type="password" required>
+                </div>
+      <div class="forgot-pass"></div>
+
+      <div class="btn">
+                  <div class="inner">
+      </div>
+      <button class = 'devices' id='loginButton'>Login</button>
+                </div>
+
+      </form>
+    </div>
+
+
+
+
+          <ul class="nav-items">
+            <li><img id='loginPic'src='/img/game2.png'></li>
+
+
+
+
+          </ul>
+        </nav>
+     </div>
+
+        
+
+    <div class = 'all'>
+        <!-- Cover photo -->
+        <div class = 'coverPic'>
+
+            <!--title-->
+            <p class = 'coverPicTitle '>PS4 Games</p>
+
+            <!--selections-->
+            <div class ='form-group mt-3'>
+            <input type = 'text' id = 'gameField' value = ''>
+            <button class = 'devices' type = 'submit'id = 'searchGame'>Search</button>
+          </div>
+            <!--Popular genres-->
+            <div class = 'popMenu'>
+                <div class = 'popMenuResult '>
+                    <button class = 'popMenuBox act'>Action</button>
+                    <button class = 'popMenuBox rpg'>RPG</button>
+                    <button class = 'popMenuBox sht'>Shooter</button>
+                    <button class = 'popMenuBox adv'>Adventure</button>
+                    <button class = 'popMenuBox stg'>Strategy</button>
+                    <button class = 'popMenuBox rac'>Racing</button>
+                </div>
+            </div>
+            <div class = 'contentTop'></div>
+        </div>
+    </div>
+
+    
+    <div class="row justify-content-center" >
+      <div class="row col-8" id='gameResut'>
+          <p id="results"></p>
+
+          <div id="gameList">
+
+          </div>
+
+      </div>
+
+    </div>
+
+
+    <div class='resultsPage'>
+
+    </div>
+    
+          
+    <script src="/js/game.js"></script>
+    <script src="/js/app.js"></script>
+    
+</body>
+</html>

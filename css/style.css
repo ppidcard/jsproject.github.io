@@ -1,0 +1,376 @@
+.all{
+width: 60vw;
+margin-left:200px;
+    color: white;
+}
+
+html {
+    min-height: 100vh;
+  }
+  body {
+      font-family: sans-serif;
+
+    position: relative;
+  }
+  
+  * {
+      box-sizing: border-box;
+  }
+  
+  .container {
+  
+      margin: 0 auto;
+
+      text-align: center;
+  }
+  
+  #sideMenu {
+    width:200px;
+    position: fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    background-color: #252a32;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0.99
+  }
+  
+  .nav-items {
+      padding-inline-start: 0;
+      margin-left: 40px;
+  }
+  
+  .nav-items > li{
+    list-style-type: none;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .nav-items > li:hover{
+    cursor: pointer;
+    transform: scale(1.01)
+  }
+  
+  strong {
+    color: #e16365;
+  }
+  a{
+    text-decoration: none;  
+  }
+  a:visited {
+    color: white;
+  }
+  
+  #hamburgerBtn {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  
+  #hamburgerBtn:hover {
+    cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 768px) {
+  
+    body {
+      margin-left: 0px;
+    }
+    #sideMenu {
+      width: 100vw; 
+      transform: translateX(-1000px);
+      transition: 500ms transform;
+    }
+    
+    #sideMenu.open {
+      transform: translateX(0);
+    }
+    
+    .nav-items > li{
+      list-style-type: none;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    #hamburgerBtn {
+      display: inline-block;
+      z-index: 10;
+    }
+  }
+.coverPic{
+    width: calc(100vw - 200px);
+    height: 496px;
+    background-image: url(/img/Final-Fantasy-VII-Remake-Part-2-Yoshinori-Kitase-Square-Enix-Siliconera.jpg);
+    background-position: top;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* title */
+.coverPicTitle{
+    font-size: 40px;
+    color: tomato;
+    letter-spacing: 3.89px;
+    padding-top: 89px;
+    margin-bottom: 96px;
+}
+
+/* selection */
+.devices{
+    width: 70px;
+    height: 30px;
+    font-size: 1rem;
+    border: none;
+    background-color: tomato;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 100%;
+    border-radius: 3px;
+    
+}
+
+.devices:hover{
+  background-color: brown;
+  opacity: 80%;
+}
+
+.devices:focus {outline:0;}
+
+#sideMenu img{
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+.popMenu{
+    width: 78%;
+    background-color: 0 1px 3px 0 rgba(0, 0, 0, 0.20);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 50px;
+    z-index: 2;
+}
+.popMenuTitle{
+    color: black;
+    font-size: 18px;
+    columns: #000000;
+    margin-top: 20px;
+    margin-left: 26px;
+    margin-bottom: 14px;
+}
+.popMenuResult{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 18px;
+    color: white;
+}
+.popMenuBox{
+    padding: 11px 0px;
+    width: 12%;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+
+
+
+.popMenuBox:focus {outline:0;}
+
+.act{
+    background-color: #8A82CC;
+}
+
+.act:hover{
+  background-color:teal;
+
+}
+.rpg{
+    background-color: #ffa782;
+}
+.rpg:hover{
+  background-color:#e16365;
+}
+.sht{
+    background-color: #f5d005;
+}
+.sht:hover{
+  background-color: goldenrod;
+}
+
+.adv{
+    background-color: #559AC8;
+}
+.adv:hover{
+  background-color:darkslateblue;
+}
+.stg{
+    background-color:darkseagreen;
+}
+.stg:hover{
+  background-color:cadetblue;
+}
+
+.rac{
+  background-color:hotpink;
+}
+.rac:hover{
+background-color:deeppink;
+}
+
+#gameResut{
+  margin-left: 180px;
+  width: 1600px;
+  height: 70vh;
+
+}
+
+#gameResut #gameList{
+  width: 1600px;
+
+}
+
+
+
+#gameIndividual{
+  width: 280px;
+  height: 300px;
+  margin-left: 35px;
+  border-color: white;
+  float: left;
+}
+
+#numberOfGames{
+  margin-left: 430px;
+  padding-top: 40px;
+}
+#gameIndividual img{
+  border-radius: 30px;
+  width: 280px;
+  height: 170px;
+}
+
+h2{
+  display: inline-block;
+  margin-left: -15px;
+  margin-top: 10px;
+  font-size: 15px;
+  padding: 2px 5px;
+  color: white;
+  opacity: 70%;
+  background-color:black;
+}
+
+h3{
+  margin-left: 177px;
+  margin-top: -40px;
+  font-size: 12px;
+  color: white;
+  opacity: 70%;
+}
+
+.btnpage{
+  display: flex;
+  justify-content: center;
+}
+
+.btnpage span{
+  border: 1px solid;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin: 10px;
+  font-size: 24px;
+}
+
+.btnpage span:hover{
+  background: #757575;
+  color: white;
+}
+
+.resultsPage{
+  margin-left: 400px;
+
+}
+
+
+
+.btn_prev{
+
+  margin-left: 20px;
+  margin-top: 240px;
+  margin-bottom: 30px;
+  width: 70px;
+  height: 30px;
+  font-size: 1rem;
+    border: none;
+    background-color:cadetblue;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 100%;
+    border-radius: 3px;
+}
+
+.btn_next{
+  float: right;
+  margin-right: 240px;
+  margin-top: 240px;
+  margin-bottom: 30px;
+  width: 70px;
+  height: 30px;
+  font-size: 1rem;
+    border: none;
+    background-color:cadetblue;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 100%;
+    border-radius: 3px;
+    
+}
+
+.btn-pagination:hover{
+  background-color:darkgreen;
+  opacity: 80%;
+}
+
+.btn-pagination:focus {outline:0;}
+
+#loginInAll{
+  margin-top: -450px;
+  margin-right: 60px;
+}
+#login{
+  width: 150px;
+  height: 20px;
+}
+#logLabel{
+  font-size: 11px;
+  margin-top: 20px;
+  margin-bottom: -6px;
+  margin-left: -40px;
+}
+#loginButton{
+  width: 60px;
+  height: 20px;
+  font-size: 11px;
+  background-color:darkgrey;
+  margin-left: -40px;
+}
+
+li #loginPic{
+  width: 40px;
+  height: 40px;
+  margin-top: -600px;
+  margin-left: 10px;
+}
