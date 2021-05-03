@@ -15,6 +15,8 @@ const genreButtonStg = document.querySelector('.stg');
 const genreButtonSht = document.querySelector('.sht');
 const resultButtons = document.querySelector('.resultsPage');
 
+
+
 const clearUI = () =>{
   gameResults.innerHTML = '';
   gameList.innerHTML = '';
@@ -155,6 +157,14 @@ genreButtonAct.addEventListener('click', e =>{
       });
     })
 
+
+    gameField.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      searchButton.click();
+    }
+});
+
 searchButton.addEventListener('click', e => {
 
     clearUI();
@@ -213,7 +223,7 @@ const renderButtons = (page, gameTotalNumbers, gamePerPage) => {
       } else if(page === pages && pages > 1){
         button = createButton(page, 'prev');
       } else{
-        button = '';
+        button='';
       }
 
       resultButtons.insertAdjacentHTML('afterbegin', button);

@@ -22,16 +22,18 @@
 
 
 
-
       <div id='loginInAll'>
+      
+
+
       <form id='log'action="#">
                 <div class="dataUser">
                   <label id='logLabel'>Username</label>
-                  <input id='login'type="text" required>
+                  <input class='login' id='loginUsername'type="text" required>
                 </div>
       <div class="dataPassword">
                   <label id='logLabel'>Password</label>
-                  <input id='login'type="password" required>
+                  <input class='login'id='loginPassword'type="password" required>
                 </div>
       <div class="forgot-pass"></div>
 
@@ -68,8 +70,9 @@
 
             <!--selections-->
             <div class ='form-group mt-3' id='twoFields'>
-            <input type = 'text' id = 'gameField' value = ''>
-            <button class = 'devices' type = 'submit'id = 'searchGame'>Search</button>
+            <input type = 'text' id = 'gameField' >
+            
+            <button class = 'devices' type="button" id = 'searchGame'>Search</button>
           </div>
             <!--Popular genres-->
             <div class = 'popMenu'>
@@ -118,6 +121,7 @@
     </footer>
     <script src="/js/game.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/users.js"></script>
     
 
 </body>
