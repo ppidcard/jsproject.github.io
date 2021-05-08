@@ -46,7 +46,8 @@ loginButton.addEventListener('click', function(){
           <li><a>Wanted</a></li>
           <li><a>In progress</a></li>
         </ul>
-        </div>`
+        </div>
+        `
         ;
         
 
@@ -59,4 +60,5 @@ loginButton.addEventListener('click', function(){
 loginPic.addEventListener('click', function(){
     location.reload();
     return false;
+    
 })

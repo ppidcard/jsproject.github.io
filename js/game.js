@@ -1,28 +1,24 @@
 class Game {
-    constructor(){
-        this.api_key = 'b6b23e28fbd04daca92ed23fa50436b3'
-    }
-
-    async getGames(query){
-        const apiUrl = `https://api.rawg.io/api/games?key=${this.api_key}&dates=2016-01-01,2021-04-27&platforms=18&search=${query}`;
-    
+    async getGames(type, query){
+        const apiUrl = `https://api.rawg.io/api/games?key=b6b23e28fbd04daca92ed23fa50436b3&dates=2016-01-01,2021-04-27&platforms=18&${type}=${query}`;
         let data = [];
+        
         const getAllGames = async(page = 1) =>{
-            let results = await fetch(`${apiUrl}&page=${page}`);
-            results = await results.json();
-    
-            results.results.forEach(game =>{
+            const results = await axios.get(`${apiUrl}&page=${page}`);
+
+            results.data.results.forEach(game =>{
                 data.push(game);
             });
-    
-            if(page*20<results.count){
+            
+
+            if(page*20<results.data.count){
                 return await getAllGames(page + 1);
             } else {
                 return data;
             }
         }
         
-        let games = await getAllGames();
+        const games = await getAllGames();
 
         return games;
 
@@ -30,23 +26,19 @@ class Game {
     }
 
     class Genre {
-        constructor(){
-            this.api_key = 'b6b23e28fbd04daca92ed23fa50436b3'
-        }
-    
+
         async getGames(query){
-            const apiUrl = `https://api.rawg.io/api/games?key=${this.api_key}&dates=2016-01-01,2021-04-27&platforms=18&genres=${query}`;
+            const apiUrl = `https://api.rawg.io/api/games?key=b6b23e28fbd04daca92ed23fa50436b3&dates=2016-01-01,2021-04-27&platforms=18&genres=${query}`;
         
             let data = [];
             const getAllGames = async(page = 1) =>{
-                let results = await fetch(`${apiUrl}&page=${page}`);
-                results = await results.json();
+                let results = await axios.get(`${apiUrl}&page=${page}`);
         
-                results.results.forEach(game =>{
+                results.data.results.forEach(game =>{
                     data.push(game);
                 });
         
-                if(page*20<results.count){
+                if(page*20<results.data.count){
                     return await getAllGames(page + 1);
                 } else {
                     return data;
@@ -59,6 +51,8 @@ class Game {
     
         }
         }
+
+
 
 
         

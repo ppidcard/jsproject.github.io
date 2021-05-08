@@ -1,6 +1,5 @@
-const games = new Game();
-const genres = new Genre();
-
+  const games = new Game();
+  const genres = new Genre();
 
 
 const searchButton = document.querySelector('#searchGame');
@@ -30,9 +29,8 @@ genreButtonSht.addEventListener('click', e =>{
 
   clearUI();
   searchField.value = '';
-  const query = 2;
 
-    genres.getGames(query)
+    games.getGames(type='genres', query = 2)
     .then(data =>{
       displayGames(data);
       resultButtons.addEventListener('click', e => {
@@ -42,7 +40,7 @@ genreButtonSht.addEventListener('click', e =>{
           const goToPage = parseInt(btn.dataset.goto, 10);
           clearUI();
           const query = 2;
-          genres.getGames(query)
+          games.getGames(type='genres', query = 2)
           .then(data =>{
           displayGames(data, goToPage);
         })}});
@@ -175,7 +173,7 @@ searchButton.addEventListener('click', e => {
 
       gameList.innerHTML = '';
 
-      games.getGames(query)
+      games.getGames(type='search', query)
       .then(data =>{
         if(data.length === 0){
             return gameResults.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>No Game Found.</b></p>`
@@ -183,6 +181,8 @@ searchButton.addEventListener('click', e => {
         displayGames(data);
 
       });
+    } else{
+      gameResults.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>No Game Found.</b></p>`
     }
 
 
@@ -195,7 +195,7 @@ resultButtons.addEventListener('click', e => {
     const goToPage = parseInt(btn.dataset.goto, 10);
     clearUI();
     const query = searchField.value;
-    games.getGames(query)
+    games.getGames(type='search', query)
     .then(data =>{
     displayGames(data, goToPage);
   })}});
