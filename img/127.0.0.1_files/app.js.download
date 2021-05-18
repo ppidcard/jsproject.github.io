@@ -1,0 +1,242 @@
+const btn = document.querySelector('button');
+
+// setTimeout(() => {
+//     btn.style.transform = `translateX(100px)`;
+//     setTimeout(() => {
+//         btn.style.transform = `translateX(200px)`;
+//         setTimeout(() => {
+//             btn.style.transform = `translateX(300px)`;
+//             setTimeout(() => {
+//                 btn.style.transform = `translateX(400px)`;
+//                 setTimeout(() => {
+//                     btn.style.transform = `translateX(500px)`;
+//                 }, 1000)
+//             }, 1000)
+//         }, 1000)
+//     }, 1000)
+// }, 1000) 
+
+// const moveX = (element, amount, delay, onSuccess, onFailure) => {
+//     setTimeout(() => {
+//     const bodyBoundary = document.body.clientWidth;
+//     const elRight = element.getBoundingClientRect().right;
+//     const currLeft = element.getBoundingClientRect().left;
+//     if(elRight + amount > bodyBoundary){
+//         onFailure();
+//     } else{
+
+//         element.style.transform = `translateX(${currLeft + amount}px)`;
+//     onSuccess()};
+//     }, delay);
+//     };
+
+
+// moveX(btn, 100, 1000, () => {
+//     moveX(btn, 100, 1000, () => {
+//         moveX(btn, 100, 1000, () => {
+//             moveX(btn, 100, 1000, () => {
+//                 moveX(btn, 800, 1000, () => {
+//                 })
+//             });
+//         });
+//     });
+// });
+
+// moveX(btn, 100, 1000, () => {
+//     moveX(btn, 100, 1000, () => {
+//         moveX(btn, 1000, 1000, () => {
+//         }, () => {
+//             alert('CANNOT MOVE FURTHER!');
+//         })
+//     }, () => {
+//         alert('CANNOT MOVE FURTHER!');
+//     });
+// }, () => {
+//     alert('CANNOT MOVE FURTHER!');
+// });
+
+//Make a function that returns a promise
+// const makeDogPromise = () => {
+//     return new Promise((resolve, reject) =>{
+//         //resolve & reject, these 2 are functions !!
+//         setTimeout(() =>{
+//             const rand = Math.random();
+//             if(rand < 0.5){
+//                 resolve();
+//             } else {
+//                 reject();
+//             }
+//         }, 5000);
+//     });
+// }
+
+
+// makeDogPromise()
+//     .then(() => {
+//     //when promise is resolved
+//     console.log('YAY WE GOT A DOG!!!!!!')
+// })
+//     .catch(() =>{
+//     //when promise is rejected
+//     console.log(':( NO DOG')
+// })
+
+
+// const fakeRequest = (url) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+
+//                 const pages = {
+//                     '/users': [
+//                         { id: 1, username: 'Bilbo'},
+//                         { id: 5, username: 'Esnerelda'}
+//                     ],
+//                     '/about': 'This is the about page'
+//                 };
+//                 const data = pages[url];
+//                             if(data){
+//                 resolve({status: 200, data});
+//             }else{
+//                 reject({status: 404});
+//             }
+//             }, 1000)
+//     })
+// };
+
+// fakeRequest('/about')
+//     .then((res) => {
+//     console.log('Status Code', res.status);
+//     console.log('Data', res.data);
+//     console.log('Request worked!');
+//     })
+//     .catch(function(res){
+//     console.log(res.status);
+//     console.log('Request failed...')
+// });
+
+//axios with promise
+
+// function getData (){
+//     const data = axios.get
+//     ('https://api.rawg.io/api/games?key=2d57620042ac4120b2089b654420524e&dates=2016-01-01,2021-04-27&platforms=18&$search=persona');
+//     return data;
+// }
+
+// getData().then((res) => {
+//     console.log(res.data.results);
+// }).catch((err) => {
+//     console.log('ERR')
+// });
+
+//fetch & API
+// function getData (){
+//     const data = fetch('https://api.rawg.io/api/games?key=2d57620042ac4120b2089b654420524e&dates=2016-01-01,2021-04-27&platforms=18&$search=persona');
+//     return data;
+// }
+
+// getData().then((res) => {
+//     res.json().then((res) => {
+//         console.log(res.results);
+//     });
+// })
+
+// async function add(x, y) {
+//     if(typeof x !== 'number'|| typeof y !== 'number'){
+//         throw 'MUST BE NUMBERS'
+//     }
+//     return x + y;
+// };
+
+// add(2, 2).then((res) => {
+//     console.log(`resuit is ${res}`);
+// }).catch((err) => {
+//     console.log(err);
+// });
+
+// function add(x, y){
+//     return new Promise((resolve, reject) => {
+//         if(typeof x !== 'number' || typeof y !== 'number'){
+//             reject('Must be numbers');
+//         }
+//         resolve(x + y);
+//     });
+// }
+
+// add(2, 'u').then(res => {
+//     console.log(`resuit is ${res}`);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+
+
+// async function getPlanet (){
+//     const res = await axios.get
+//     ('https://api.rawg.io/api/games?key=2d57620042ac4120b2089b654420524e&dates=2016-01-01,2021-04-27&platforms=18&$search=persona');
+//     console.log(res.data);
+// }
+
+// getPlanet();
+
+// async function getGames(type, query,){
+//     let apiKey = '2d57620042ac4120b2089b654420524e';
+//     const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&dates=2016-01-01,2021-04-27&platforms=18&${type}=${query}`;
+//     let data = [];
+    
+//     async function getAllGames(page = 1) {
+//         const results = await axios.get(`${apiUrl}&page=${page}`);
+
+
+//         results.data.results.forEach(game =>{
+//    //         console.log(game);
+//             data.push(game);
+//         });
+        
+
+//         if(page*20<results.data.count){
+//             return await getAllGames(page + 1);
+//         } else {
+//             return data;
+//         }
+//     }
+    
+//     const games = await getAllGames();
+
+//     return games;
+
+// }
+
+
+// getGames('search', 'final fantasy');
+
+//     let apiKey = '2d57620042ac4120b2089b654420524e';
+//     const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&dates=2016-01-01,2021-04-27&platforms=18&${type}=${query}`;
+//     let data = [];
+
+const getGames = async function(query, genre){
+ let data = [];
+
+ async function getAllGames(page){
+    const res = await axios.get('https://api.rawg.io/api/games', {
+        params:{
+            key:'2d57620042ac4120b2089b654420524e',
+            search: query,
+            genres: genre,
+
+        }
+    });
+
+    console.log(res);
+    data.push(...res.data.results);
+    console.log(data);
+    if(res.data.count > page * 20){
+        return await getAllGames(page+1);
+    };
+    
+
+
+}
+
+    }
+
+    getGames('fianl');

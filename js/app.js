@@ -1,192 +1,81 @@
-  const games = new Game();
-  const genres = new Genre();
+
+//Use input value to fetch games
+//Use input value to fetch games
+//Use input value to fetch games
 
 
-const searchButton = document.querySelector('#searchGame');
-const searchField = document.querySelector('#gameField');
-const gameList = document.querySelector('#gameList');
-const gameResults = document.querySelector('#results');
-const genreButtonAct = document.querySelector('.act');
-const genreButtonAdv = document.querySelector('.adv');
-const genreButtonRpg = document.querySelector('.rpg');
-const genreButtonRac = document.querySelector('.rac');
-const genreButtonStg = document.querySelector('.stg');
-const genreButtonSht = document.querySelector('.sht');
-const resultButtons = document.querySelector('.resultsPage');
+fetchGames.addEventListener('click', e => {
+  clearUI();
+  if(gameInput.value === ''){
+    numOfGames.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>No Game Entered...</b></p>`}
+    else {getGames(gameInput.value)
+    .then(data =>{
+      if(data.length === 0){
+      return numOfGames.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>No Game Found.</b></p>`
+      } else {console.log (data); displayGames(data)};
+    });
+  } 
+});
+
+//Add 'enter' keydown
+//Add 'enter' keydown
+//Add 'enter' keydown
+
+gameInput.addEventListener("keydown", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    fetchGames.click();
+  } else if(event.keyCode === 27){
+    gameInput.value = '';
+  }
+});
+
+//render resuts to html
+//render resuts to html
+//render resuts to html
 
 
+function displayGames(data, page = 1, gamePerPage = 6){
+  const start = (page-1) * gamePerPage;
+  const end = page * gamePerPage;
+  
+   numOfGames.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>${data.length} Game Found.</b></p>`
+
+    data.slice(start, end).forEach(game => {
+      const markUp = `<div class="card mt-4" id='gameIndividual'>
+                      <div class="col no-gutters">
+                      <div class="card-img-top">
+                       <img src="${game.background_image}" class="img-fluid card-img">
+                       </div>
+                      <div class="card-body">
+                      <h3  class="card-title"><b>${game.released.split('-').splice(0,1)}.</b></h3>
+                      <h2>${game.name}</h2>
+                      </div>
+              </div>
+          </div>`;
+          const appendMarkUp = document.createElement('div');
+          appendMarkUp.innerHTML = markUp;
+
+          gamesDetails.appendChild(appendMarkUp);
+
+    });
+
+    if(gamePerPage > 1){
+      renderButtons(page, data.length, gamePerPage);
+    }
+}
+
+//Clear UP before next search
+//Clear UP before next search
+//Clear UP before next search
 
 const clearUI = () =>{
-  gameResults.innerHTML = '';
-  gameList.innerHTML = '';
+  numOfGames.innerHTML = '';
+  gamesDetails.innerHTML = '';
   resultButtons.innerHTML = '';
-
 }
 
 
-
-genreButtonSht.addEventListener('click', e =>{
-
-  clearUI();
-  searchField.value = '';
-
-    games.getGames(type='genres', query = 2)
-    .then(data =>{
-      displayGames(data);
-      resultButtons.addEventListener('click', e => {
-        const btn = e.target.closest('.btn-pagination');
-      
-        if(btn) {
-          const goToPage = parseInt(btn.dataset.goto, 10);
-          clearUI();
-          const query = 2;
-          games.getGames(type='genres', query = 2)
-          .then(data =>{
-          displayGames(data, goToPage);
-        })}});
-    });
-  })
-genreButtonStg.addEventListener('click', e =>{
-
-  clearUI();
-  searchField.value = '';
-  const query = 10;
-
-  genres.getGames(query)
-    .then(data =>{
-      displayGames(data);
-      resultButtons.addEventListener('click', e => {
-        const btn = e.target.closest('.btn-pagination');
-      
-        if(btn) {
-          const goToPage = parseInt(btn.dataset.goto, 10);
-          clearUI();
-          const query = 10;
-          genres.getGames(query)
-          .then(data =>{
-          displayGames(data, goToPage);
-        })}});
-    });
-  })
-
-genreButtonRac.addEventListener('click', e =>{
-
-  clearUI();
-  const query = 1;
-  searchField.value = '';
-  genres.getGames(query)
-    .then(data =>{
-      displayGames(data);
-      resultButtons.addEventListener('click', e => {
-        const btn = e.target.closest('.btn-pagination');
-      
-        if(btn) {
-          const goToPage = parseInt(btn.dataset.goto, 10);
-          clearUI();
-          const query = 1;
-          genres.getGames(query)
-          .then(data =>{
-          displayGames(data, goToPage);
-        })}});
-    });
-  })
-genreButtonAct.addEventListener('click', e =>{
-
-  clearUI();
-  const query = 4;
-  searchField.value = '';
-  genres.getGames(query)
-    .then(data =>{
-      displayGames(data);
-      resultButtons.addEventListener('click', e => {
-        const btn = e.target.closest('.btn-pagination');
-      
-        if(btn) {
-          const goToPage = parseInt(btn.dataset.goto, 10);
-          clearUI();
-          const query = 4;
-          genres.getGames(query)
-          .then(data =>{
-          displayGames(data, goToPage);
-        })}});
-    });
-  })
-  genreButtonRpg.addEventListener('click', e =>{
-
-    clearUI();
-    const query = 5;
-    searchField.value = '';
-    genres.getGames(query)
-      .then(data =>{
-        displayGames(data);
-        resultButtons.addEventListener('click', e => {
-          const btn = e.target.closest('.btn-pagination');
-        
-          if(btn) {
-            const goToPage = parseInt(btn.dataset.goto, 10);
-            clearUI();
-            const query = 5;
-            genres.getGames(query)
-            .then(data =>{
-            displayGames(data, goToPage);
-          })}});
-      });
-    })
-  
-  genreButtonAdv.addEventListener('click', e =>{
-
-    clearUI();
-    const query = 3;
-    searchField.value = '';
-    genres.getGames(query)
-      .then(data =>{
-        displayGames(data);
-        resultButtons.addEventListener('click', e => {
-          const btn = e.target.closest('.btn-pagination');
-        
-          if(btn) {
-            const goToPage = parseInt(btn.dataset.goto, 10);
-            clearUI();
-            const query = 3;
-            genres.getGames(query)
-            .then(data =>{
-            displayGames(data, goToPage);
-          })}});
-      });
-    })
-
-
-    gameField.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      searchButton.click();
-    }
-});
-
-searchButton.addEventListener('click', e => {
-
-    clearUI();
-
-    const query = searchField.value;
-
-    if(query !== ''){
-
-      gameList.innerHTML = '';
-
-      games.getGames(type='search', query)
-      .then(data =>{
-        if(data.length === 0){
-            return gameResults.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>No Game Found.</b></p>`
-        }
-        displayGames(data);
-
-      });
-    } else{
-      gameResults.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>No Game Found.</b></p>`
-    }
-
-
-});
 
 resultButtons.addEventListener('click', e => {
   const btn = e.target.closest('.btn-pagination');
@@ -194,11 +83,11 @@ resultButtons.addEventListener('click', e => {
   if(btn) {
     const goToPage = parseInt(btn.dataset.goto, 10);
     clearUI();
-    const query = searchField.value;
-    games.getGames(type='search', query)
+    getGames(gameInput.value)
     .then(data =>{
     displayGames(data, goToPage);
   })}});
+
 
 
 const createButton = (page, pageType) => {
@@ -229,31 +118,26 @@ const renderButtons = (page, gameTotalNumbers, gamePerPage) => {
       resultButtons.insertAdjacentHTML('afterbegin', button);
 }
 
-function displayGames(data, page = 1, gamePerPage = 6){
-  const start = (page-1) * gamePerPage;
-  const end = page * gamePerPage;
-  
-   gameResults.innerHTML = `<p class = 'mt-4' id='numberOfGames'><b>${data.length} Game Found.</b></p>`
 
-    data.slice(start, end).forEach(game => {
-      const markUp = `<div class="card mt-4" id='gameIndividual'>
-                      <div class="col no-gutters">
-                      <div class="card-img-top">
-                       <img src="${game.background_image}" class="img-fluid card-img">
-                       </div>
-                      <div class="card-body">
-                      <h3  class="card-title"><b>${game.released.split('-').splice(0,1)}.</b></h3>
-                      <h2>${game.name}</h2>
-                      </div>
-              </div>
-          </div>`;
-
-      gameList.insertAdjacentHTML(`beforeend`, markUp);
-
+genresTotal.forEach(function(genre) {
+  genre.addEventListener('click', function(e){
+    clearUI();
+    const val = genre.getAttribute('genre');
+    getGenres(val).then(data => {
+      displayGames(data);
+      resultButtons.addEventListener('click', e => {
+        const btn = e.target.closest('.btn-pagination');
+      
+        if(btn) {
+          const goToPage = parseInt(btn.dataset.goto, 10);
+          clearUI();
+          getGenres(val)
+          .then(data =>{
+          displayGames(data, goToPage);
+        })}});
     });
+  })
+})
 
-    if(gamePerPage > 1){
-      renderButtons(page, data.length, gamePerPage);
-    }
-}
+
 

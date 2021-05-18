@@ -1,58 +1,96 @@
-class Game {
-    async getGames(type, query){
-        const apiUrl = `https://api.rawg.io/api/games?key=b6b23e28fbd04daca92ed23fa50436b3&dates=2016-01-01,2021-04-27&platforms=18&${type}=${query}`;
-        let data = [];
-        
-        const getAllGames = async(page = 1) =>{
-            const results = await axios.get(`${apiUrl}&page=${page}`);
+/*obtain game singe page data => obtain all game data => 
+=> render results to html => 
+*/ 
 
-            results.data.results.forEach(game =>{
-                data.push(game);
-            });
-            
+//get first 20 games
 
-            if(page*20<results.data.count){
-                return await getAllGames(page + 1);
-            } else {
-                return data;
-            }
-        }
-        
-        const games = await getAllGames();
+// async function getGames(query){
+//     try{
+//         const res = await axios.get('https://api.rawg.io/api/games', {
+//             params:{
+//                 search:query,
+//                 dates:'2016-01-01,2021-04-27',
+//                 key:'2d57620042ac4120b2089b654420524e',
+//                 platforms:'18'
+//             }
+//         })
 
-        return games;
+//         const data = res.data.results;
+//         return data;
+//     }catch(err){
+//         alert(`Error! ${err}`);
+//     }
+// }
+
+
+
+//Get all games
+
+async function getGames(query){
+    try{
+    let data = [];
+   
+    async function getAll(page = 1){
+       const res = await axios.get('https://api.rawg.io/api/games', {
+           params:{
+               key:'2d57620042ac4120b2089b654420524e',
+               dates: '2016-01-01,2021-04-27',
+               platforms:'18',
+               search: query,
+               page:page,
+   
+           }
+       });
+   
+       res.data.results.forEach(element => {
+           data.push(element);
+       });
+       
+   
+       if(page * 20 < res.data.count){
+         return  await getAll(page+1);
+       }
+       return data;
+       };
+   
+       const game =  await getAll();
+       return game;
+    } catch (err){alert(`ERROR: ${err}`)
 
     }
-    }
+   }
 
-    class Genre {
-
-        async getGames(query){
-            const apiUrl = `https://api.rawg.io/api/games?key=b6b23e28fbd04daca92ed23fa50436b3&dates=2016-01-01,2021-04-27&platforms=18&genres=${query}`;
-        
-            let data = [];
-            const getAllGames = async(page = 1) =>{
-                let results = await axios.get(`${apiUrl}&page=${page}`);
-        
-                results.data.results.forEach(game =>{
-                    data.push(game);
-                });
-        
-                if(page*20<results.data.count){
-                    return await getAllGames(page + 1);
-                } else {
-                    return data;
-                }
+   async function getGenres(genre){
+    try{
+    let data = [];
+   
+    async function getAll(page = 1){
+        const res = await axios.get('https://api.rawg.io/api/games', {
+            params:{
+                key:'2d57620042ac4120b2089b654420524e',
+                dates: '2021-01-01,2021-04-27',
+                platforms:'18',
+                genres: genre,
+                page:page,
+    
             }
-            
-            const games = await getAllGames();
+        });
     
-            return games;
+        res.data.results.forEach(element => {
+            data.push(element);
+        });
+        
     
+        if(page * 20 < res.data.count){
+          return  await getAll(page+1);
         }
-        }
-
-
-
+        return data;
+        };
+    
+        const game =  await getAll();
+        return game;
+    }catch (err){alert(`ERROR: ${err}`)
+    }
+}
 
         

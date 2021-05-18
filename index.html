@@ -10,22 +10,13 @@
 </head>
 <body>
     
-
     <div class="container">
         <div id="hamburgerBtn">&#9776</div>
         <nav id="sideMenu">
           <div class="nav-brand">
-
-
           </div>
-
-
-
-
       <div id='loginInAll'>
       
-
-
       <form id='log'action="#">
                 <div class="dataUser">
                   <label id='logLabel'>Username</label>
@@ -70,41 +61,40 @@
 
             <!--selections-->
             <div class ='form-group mt-3' id='twoFields'>
-            <input type = 'text' id = 'gameField' >
+            <input type = 'text' id = 'gameInput' placeholder="Enter the game..." >
             
-            <button class = 'devices' type="button" id = 'searchGame'>Search</button>
+            <button class = 'devices' type="button" id = 'fetchGames'>Search</button>
           </div>
             <!--Popular genres-->
+            <section id='genretypes'></section>
             <div class = 'popMenu'>
                 <div class = 'popMenuResult '>
-                    <button class = 'popMenuBox act'>Action</button>
-                    <button class = 'popMenuBox rpg'>RPG</button>
-                    <button class = 'popMenuBox sht'>Shooter</button>
-                    <button class = 'popMenuBox adv'>Adventure</button>
-                    <button class = 'popMenuBox stg'>Strategy</button>
-                    <button class = 'popMenuBox rac'>Racing</button>
+                    <button class = 'popMenuBox act' genre=4>Action</button>
+                    <button class = 'popMenuBox rpg' genre=5>RPG</button>
+                    <button class = 'popMenuBox sht' genre=2>Shooter</button>
+                    <button class = 'popMenuBox adv' genre=3>Adventure</button>
+                    <button class = 'popMenuBox stg' genre=10>Strategy</button>
+                    <button class = 'popMenuBox rac' genre=1>Racing</button>
                 </div>
             </div>
-            <div class = 'contentTop'></div>
+
         </div>
     </div>
 
     
-    <div class="row justify-content-center" >
-      <div class="row col-8" id='gameResut'>
-          <p id="results"></p>
-
-          <div id="gameList">
+    <div class="row justify-content-center">
+      <div class="row col-8" id='gameResult'>
+          <div id="numOfGames">
+          <!-- Pass search result number of games  -->
+          </div>
+          <div id="gamesDetails">
+            <!-- Pass details of games searched -->
             <img id='loading' src='/img/loading.gif'>
           </div>
-
       </div>
-
     </div>
 
-
     <div class='resultsPage'>
- 
     </div>
     
     <footer>
@@ -121,7 +111,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="/js/game.js"></script>
+    <script src="/js/variables.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/users.js"></script>
     
@@ -130,3 +122,15 @@
 
 
 </html>
+
+<!-- <div class="card mt-4" id='gameIndividual'>
+  <div class="col no-gutters">
+  <div class="card-img-top">
+   <img src="${game.background_image}" class="img-fluid card-img">
+   </div>
+  <div class="card-body">
+  <h3  class="card-title"><b>${game.released.split('-').splice(0,1)}.</b></h3>
+  <h2>${game.name}</h2>
+  </div>
+</div>
+</div> -->
