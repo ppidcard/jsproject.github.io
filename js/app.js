@@ -1,3 +1,12 @@
+//Clear UP before next search
+//Clear UP before next search
+//Clear UP before next search
+
+const clearUI = () =>{
+  numOfGames.innerHTML = '';
+  gamesDetails.innerHTML = '';
+  resultButtons.innerHTML = '';
+}
 
 //Use input value to fetch games
 //Use input value to fetch games
@@ -59,36 +68,10 @@ function displayGames(data, page = 1, gamePerPage = 6){
           gamesDetails.appendChild(appendMarkUp);
 
     });
-
-    if(gamePerPage > 1){
       renderButtons(page, data.length, gamePerPage);
-    }
 }
 
-//Clear UP before next search
-//Clear UP before next search
-//Clear UP before next search
-
-const clearUI = () =>{
-  numOfGames.innerHTML = '';
-  gamesDetails.innerHTML = '';
-  resultButtons.innerHTML = '';
-}
-
-
-
-resultButtons.addEventListener('click', e => {
-  const btn = e.target.closest('.btn-pagination');
-
-  if(btn) {
-    const goToPage = parseInt(btn.dataset.goto, 10);
-    clearUI();
-    getGames(gameInput.value)
-    .then(data =>{
-    displayGames(data, goToPage);
-  })}});
-
-
+//create button UI
 
 const createButton = (page, pageType) => {
   return `<button class='btn-pagination btn_${pageType}' data-goto=${pageType === 'prev' ? page - 1: page + 1}>
@@ -97,44 +80,55 @@ const createButton = (page, pageType) => {
 }
 
 
+//render button to html
+
 const renderButtons = (page, gameTotalNumbers, gamePerPage) => {
-      const pages = Math.ceil(gameTotalNumbers/gamePerPage);
+  const pages = Math.ceil(gameTotalNumbers/gamePerPage);
 
-      let button;
+  const button = document.createElement('div');
 
-      if(page === 1 && pages > 1){
-        button = createButton(page, 'next');
-      } else if(page < pages){
-        button = `
-                ${createButton(page, 'prev')}
-                ${createButton(page, 'next')}        
-      `
-      } else if(page === pages && pages > 1){
-        button = createButton(page, 'prev');
-      } else{
-        button='';
-      }
-
-      resultButtons.insertAdjacentHTML('afterbegin', button);
+  if(page === 1 && pages > 1){
+    button.innerHTML = createButton(page, 'next');
+  } else if(page < pages){
+    button.innerHTML = `
+            ${createButton(page, 'prev')}
+            ${createButton(page, 'next')}        
+  `
+  } else if(page === pages && pages > 1){
+    button.innerHTML = createButton(page, 'prev');
+  } else{
+    button.innerHTML ='';
+  }
+  resultButtons.append(button);
 }
 
+//create next pages
+resultButtons.addEventListener('click', e => {
+  const btn = e.target.closest('.btn-pagination');
+  console.log(e.target);
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    clearUI();
+    getGames(gameInput.value)
+    .then(data =>{
+    displayGames(data, goToPage);
+  })});
 
+
+//obtain games by searching genres
 genresTotal.forEach(function(genre) {
   genre.addEventListener('click', function(e){
     clearUI();
-    const val = genre.getAttribute('genre');
-    getGenres(val).then(data => {
+
+    getGenres(genre.dataset.genre).then(data => {
       displayGames(data);
       resultButtons.addEventListener('click', e => {
         const btn = e.target.closest('.btn-pagination');
-      
-        if(btn) {
           const goToPage = parseInt(btn.dataset.goto, 10);
           clearUI();
-          getGenres(val)
+          getGenres(genre.dataset.genre)
           .then(data =>{
           displayGames(data, goToPage);
-        })}});
+        })});
     });
   })
 })

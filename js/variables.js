@@ -2,7 +2,7 @@ const fetchGames = document.querySelector('#fetchGames');
 const gameInput = document.querySelector('#gameInput');
 const gamesDetails = document.querySelector('#gamesDetails');
 const numOfGames = document.querySelector('#numOfGames');
-const resultButtons = document.querySelector('.resultsPage');
+const resultButtons = document.querySelector('.resultButtons');
 
 const genreButtonAct = document.querySelector('.act');
 const genreButtonAdv = document.querySelector('.adv');
@@ -17,7 +17,6 @@ const genresTotal = [genreButtonAct,
                     genreButtonRac,
                     genreButtonStg,
                   genreButtonSht];
-
 
 
 
